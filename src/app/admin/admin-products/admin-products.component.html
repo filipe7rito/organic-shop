@@ -1,0 +1,35 @@
+<p>
+  <a routerLink="/admin/products/new" class="btn btn-primary">New product</a>
+</p>
+<p><input #query type="text" placeholder="search..." (keyup)="filter(query.value)" class="form-control"></p>
+
+<table class="table table-striped" [mfData]="filteredProducts" #mf="mfDataTable" [mfRowsOnPage]="5">
+  <thead>
+    <tr>
+      <th style="width: 50%">
+        <mfDefaultSorter by="title">Title</mfDefaultSorter>
+      </th>
+      <th style="width: 40%">
+        <mfDefaultSorter by="price">Price</mfDefaultSorter>
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr *ngFor="let p of  mf.data">
+      <td>{{p.title}}</td>
+      <td>{{p.price}}</td>
+      <td>
+        <a [routerLink]="['/admin/products',p.key]">Edit</a>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="4">
+        <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+      </td>
+    </tr>
+  </tfoot>
+</table>
