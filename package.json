@@ -7,7 +7,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy:gh": "ng build --prod --base-href=https://filipe7rito.github.io/organic-shop/ && ngh --no-silent",
+    "deploy:firebase": "ng build --prod firebase deploy"
   },
   "private": true,
   "dependencies": {

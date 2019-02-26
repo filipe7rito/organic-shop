@@ -1,10 +1,7 @@
-import { Observable } from 'rxjs';
-import { async } from '@angular/core/testing';
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
+import { AngularFireDatabase } from '@angular/fire/database';
 import * as firebase from 'firebase/app';
-import { FirebaseApp } from '@angular/fire';
-import { AppUser } from './models/app-user';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

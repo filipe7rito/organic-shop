@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 export class CategoryService {
   constructor(private db: AngularFireDatabase) {}
 
-  getCategories() {
+  getAll() {
     return this.db
       .list('/categories')
       .snapshotChanges()
@@ -16,7 +16,7 @@ export class CategoryService {
         map(items => {
           // <== new way of chaining
           return items.map(a => {
-            const name =  a.payload.val()['name'];            ;
+            const name = a.payload.val()['name'];
             const key = a.payload.key;
             return { key, name }; // or {key, ...data} in case data is Obj
           });
