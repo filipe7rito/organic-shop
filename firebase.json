@@ -1,5 +1,9 @@
 {
   "hosting": {
-    "public": "dist/organic-shop"
+    "public": "dist/organic-shop",
+    "rewrites": [{
+      "source": "**",
+      "destination": "/index.html"
+    }]
   }
 }
