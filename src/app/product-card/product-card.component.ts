@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from '../models/product';
+import { ShoppingCartService } from '../shopping-cart.service';
 
 @Component({
   selector: 'product-card',
@@ -9,5 +10,19 @@ import { Product } from '../models/product';
 export class ProductCardComponent {
   @Input() product: Product;
   @Input() showActions = true;
-  constructor() {}
+  @Input() shoppingCart;
+  constructor(private cartService: ShoppingCartService) {}
+
+  addToCart(product: Product) {
+    this.cartService.addToCart(product);
+  }
+
+  getQuantity() {
+    if (this.shoppingCart && this.shoppingCart.items) {
+      const item = this.shoppingCart.items[this.product.key];
+      return item ? item.quantity : 0;
+    } else {
+      return 0;
+    }
+  }
 }
